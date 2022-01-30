@@ -1,9 +1,16 @@
 package Login;
 
-
+import Usuarios.Propietario;
 import gui.Conexion;
 import java.sql.Connection;
-
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,6 +18,7 @@ import java.sql.Connection;
  */
 public class Registro extends javax.swing.JFrame {
 
+    Propietario p = new Propietario();
     String sql = "";
     Conexion cnx = new Conexion();
     Connection cn = cnx.conectar();
@@ -26,10 +34,7 @@ public class Registro extends javax.swing.JFrame {
      */
     public Registro() {
         initComponents();
-<<<<<<< Updated upstream
-       
-=======
-        
+
         jLbProveedor.setVisible(false);
         jTxtCedProveedor.setVisible(false);
     }
@@ -82,12 +87,154 @@ public class Registro extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Faltan datos !");
         }
->>>>>>> Stashed changes
     }
 
+    public void agregarSecretariaBD() {
+        try {
+            agregarDatosContrato();
+            agregarContraseniaUsuario();
+            sql = "insert into secretarias(cedula_sec,nombre_sec,apellido_sec,telefono_sec,direccion_sec)values(?,?,?,?,?)";
+            PreparedStatement psd = cn.prepareStatement(sql);
+            psd.setString(1, p.getCedula());
+            psd.setString(2, p.getNombre());
+            psd.setString(3, p.getApellido());
+            psd.setString(4, p.getTelefono());
+            psd.setString(5, p.getDireccion());
+            n = psd.executeUpdate();
+            if (n > 0) {
+                JOptionPane.showMessageDialog(null, "CUENTA CREADA CON EXITO !");
+                this.dispose();
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Faltan datos !");
+        }
+    }
 
+    public void agregarDatosContrato() {
+        try {
+            String sql = "";
+            sql = "insert into contrato_pro_sec(id_con,fec_ini_con,fec_fin_con,ced_pro_con,ced_sec_con,estado_contrato)values(?,?,?,?,?,?)";
+            PreparedStatement psd = cn.prepareStatement(sql);
+            psd.setInt(1, SQL.id_inrementable());
+            psd.setString(2, fechaActual());
+            psd.setString(3, "NULL");
+            psd.setString(4, this.cedulaProveedor);
+            psd.setString(5, p.getCedula());
+            psd.setString(6, "YES");
+            int n = psd.executeUpdate();
+            if (n > 0) {
+                JOptionPane.showMessageDialog(null, "Contrato Creado !");
 
-    
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+
+    public boolean buscarProveedor() {
+        boolean encontrarCed = false;
+        try {
+            System.out.println(this.cedulaProveedor);
+            String sql = "";
+            sql = "select ced_pro, nom_pro, ape_pro from propietarios where ced_pro=" + this.cedulaProveedor;
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                if (cedulaProveedor.equals(rs.getString("ced_pro"))) {
+                    JOptionPane.showMessageDialog(null, "Su contrato es con: " + rs.getString("nom_pro") + rs.getString("ape_pro"));
+                    encontrarCed = true;
+                    break;
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "La cedula del Proveedor no se encuentra !");
+        }
+        return encontrarCed;
+    }
+
+    public void agregarContraseniaUsuario() {
+        try {
+            String sql1 = "";
+            sql1 = "insert into usuarios(usuario,fec_abre_cuen_usu,fec_cierra_cuen_usu,contrasenia,cargo_usu,estado_usu,ced_usu_per)values(?,?,?,?,?,?,?)";
+            PreparedStatement psd = cn.prepareStatement(sql1);
+            psd.setString(1, p.getUsuario());
+            psd.setString(2, fechaActual());
+            psd.setString(3, "NULL");
+            psd.setString(4, p.getContrasenia());
+            psd.setString(5, p.getCargo());
+            psd.setString(6, "YES");
+            psd.setString(7, p.getCedula());
+            int n = psd.executeUpdate();
+            if (n > 0) {
+                JOptionPane.showMessageDialog(null, "Usuario Creado!");
+                this.dispose();
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+
+    public void crearCuenta() {
+        p.setCedula(jTxtCedula.getText());
+        p.setNombre(jTxtNombre.getText());
+        p.setApellido(jTxtApellido.getText());
+        p.setDireccion(jTxtDireccion.getText());
+        p.setTelefono(jTxtTelefono.getText());
+        p.setUsuario(jTxtUsuario.getText());
+        p.setContrasenia(jPsdContrasenia.getText());
+        p.setCargo(jCmbxCargo.getSelectedItem().toString());
+        this.cedulaProveedor = jTxtCedProveedor.getText();
+        if (p.getCargo().equals("Propietario")) {
+            agregarPropietarioBD();
+        } else if (p.getCargo().equals("Inquilino")) {
+            agregarInquilinoBD();
+        } else if (p.getCargo().equals("Secretaria")) {
+            if (buscarProveedor()) {
+                agregarSecretariaBD();
+            }
+        }
+    }
+
+    public void verificarContenidoTxt() {
+        if (jTxtCedula.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar la Cedula");
+            jTxtCedula.requestFocus();
+        } else if (jTxtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar el Nombre");
+            jTxtNombre.requestFocus();
+        } else if (jTxtApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar el Apellido");
+            jTxtApellido.requestFocus();
+        } else if (jTxtTelefono.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar el Telefono");
+            jTxtTelefono.requestFocus();
+        } else if (jTxtDireccion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar la Direccion");
+            jTxtDireccion.requestFocus();
+        } else if (jTxtUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar el nombre de Usuario");
+            jTxtUsuario.requestFocus();
+        } else if (jPsdContrasenia.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar una Contraseña");
+            jPsdContrasenia.requestFocus();
+        } else if (jCmbxCargo.getSelectedItem().toString().equals("Seleccione Uno")) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar el Cargo");
+            jCmbxCargo.requestFocus();
+        } else {
+            crearCuenta();
+        }
+    }
+
+    public void habilitarCampoCedulaProovedor() {
+        String cargo = jCmbxCargo.getSelectedItem().toString();
+        if (cargo.equals("Secretaria")) {
+            jLbProveedor.setVisible(true);
+            jTxtCedProveedor.setVisible(true);
+        } else {
+            jLbProveedor.setVisible(false);
+            jTxtCedProveedor.setVisible(false);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -365,10 +512,13 @@ public class Registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCrearCuentaActionPerformed
-
+        verificarContenidoTxt();
+        if (this.n == 1) {
+            Login l = new Login();
+            l.setVisible(true);
 
     }//GEN-LAST:event_jBtnCrearCuentaActionPerformed
-
+    }
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         this.dispose();
         Login l = new Login();
@@ -377,7 +527,7 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jCmbxCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCmbxCargoActionPerformed
-
+        habilitarCampoCedulaProovedor();
     }//GEN-LAST:event_jCmbxCargoActionPerformed
 
     private void jTxtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtDireccionActionPerformed
