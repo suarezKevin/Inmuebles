@@ -92,6 +92,8 @@ public class GestionSecretaria extends javax.swing.JInternalFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(460, 484));
 
+        jTblInquilinos.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTblInquilinos.setForeground(new java.awt.Color(102, 102, 102));
         jTblInquilinos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -110,6 +112,8 @@ public class GestionSecretaria extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTblInquilinos);
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(19, 56, 190));
         jLabel1.setText("Lista de Inquilinos");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -131,7 +135,7 @@ public class GestionSecretaria extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
                 .addGap(27, 27, 27))
         );
 
