@@ -118,9 +118,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             case "Inquilino":
                 buscarInquilino();
                 break;
-            case "Secretaria":
-                buscarSecretaria();
-                break;
+            
             default:
         }
     }
