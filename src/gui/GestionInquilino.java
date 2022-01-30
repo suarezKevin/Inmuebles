@@ -38,10 +38,10 @@ public class GestionInquilino extends javax.swing.JInternalFrame {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         this.cedulaUsuario = cedula;
-        String[] opciones = {"Selecciones uno...", "TODOS", "EDIFICIO", "LOCAL", "DEPARTAMENTO"};
+        String[] opciones = {"TODOS", "EDIFICIO", "LOCAL", "DEPARTAMENTO"};
         DefaultComboBoxModel mod = new DefaultComboBoxModel(opciones);
         jCmbxTipoInmueble.setModel(mod);
-        //cargarTabla();
+        cargarTabla();
         agregarTablaAquilados();
     }
 
