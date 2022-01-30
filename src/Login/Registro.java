@@ -26,7 +26,63 @@ public class Registro extends javax.swing.JFrame {
      */
     public Registro() {
         initComponents();
+<<<<<<< Updated upstream
        
+=======
+        
+        jLbProveedor.setVisible(false);
+        jTxtCedProveedor.setVisible(false);
+    }
+
+    public String fechaActual() {
+        //java.sql.Date fechaActual;
+        Date fecha = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/YYYY");
+        //formato.format(fecha);
+        //long f = fecha.getTime();
+        //return fechaActual = new java.sql.Date(f);
+        return formato.format(fecha);
+    }
+
+    public void agregarPropietarioBD() {
+        try {
+            agregarContraseniaUsuario();
+            sql = "insert into propietarios(ced_pro,nom_pro,ape_pro,tel_pro,dir_pro)values(?,?,?,?,?)";
+            PreparedStatement psd = cn.prepareStatement(sql);
+            psd.setString(1, p.getCedula());
+            psd.setString(2, p.getNombre());
+            psd.setString(3, p.getApellido());
+            psd.setString(4, p.getTelefono());
+            psd.setString(5, p.getDireccion());
+            n = psd.executeUpdate();
+            if (n > 0) {
+                JOptionPane.showMessageDialog(null, "USUARIO CREADO CON EXITO !");
+                this.dispose();
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Faltan datos !");
+        }
+    }
+
+    public void agregarInquilinoBD() {
+        try {
+            agregarContraseniaUsuario();
+            sql = "insert into inquilinos(ced_inq,nom_inq,ape_inq,tel_inq,dir_inq)values(?,?,?,?,?)";
+            PreparedStatement psd = cn.prepareStatement(sql);
+            psd.setString(1, p.getCedula());
+            psd.setString(2, p.getNombre());
+            psd.setString(3, p.getApellido());
+            psd.setString(4, p.getTelefono());
+            psd.setString(5, p.getDireccion());
+            n = psd.executeUpdate();
+            if (n > 0) {
+                JOptionPane.showMessageDialog(null, "USUARIO CREADO CON EXITO !");
+                this.dispose();
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Faltan datos !");
+        }
+>>>>>>> Stashed changes
     }
 
 
