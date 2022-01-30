@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
-
+ 
 import gui.Conexion;
 import Login.Login;
 import java.sql.Connection;
@@ -44,7 +44,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         gi.setVisible(true);
     }
 
-    
 
     public void dimensionGpropietario(GestionPropietario gp) {
         int ancho = jDsktpVentana.getWidth();
@@ -68,7 +67,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     interfazInquilino();
                 } else {
                     this.cargoU = rs.getString("cargo_usu");
-                    
+                   
                 }
             }
 
@@ -373,9 +372,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparaModificar = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Principal");
+        setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
 
-        jBtnGdepartamento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jBtnGdepartamento.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jBtnGdepartamento.setForeground(new java.awt.Color(19, 56, 190));
         jBtnGdepartamento.setText("Gestion Departamento");
         jBtnGdepartamento.setFocusable(false);
         jBtnGdepartamento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -386,7 +391,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jBtnGlocal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jBtnGlocal.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jBtnGlocal.setForeground(new java.awt.Color(19, 56, 190));
         jBtnGlocal.setText("Gestion Local");
         jBtnGlocal.setFocusable(false);
         jBtnGlocal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -397,7 +403,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jBtnGedificio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jBtnGedificio.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jBtnGedificio.setForeground(new java.awt.Color(19, 56, 190));
         jBtnGedificio.setText("Gestion Edificio");
         jBtnGedificio.setFocusable(false);
         jBtnGedificio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -414,12 +421,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jBtnGedificio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnGlocal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBtnGedificio, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addComponent(jBtnGlocal, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jBtnGdepartamento)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,13 +434,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jBtnGlocal)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jBtnGedificio)
-                        .addComponent(jBtnGdepartamento, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(jBtnGedificio)
+                    .addComponent(jBtnGdepartamento))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal.jpeg"))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal.png"))); // NOI18N
+        jLabel3.setToolTipText("");
 
         jDsktpVentana.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -441,10 +450,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jDsktpVentana.setLayout(jDsktpVentanaLayout);
         jDsktpVentanaLayout.setHorizontalGroup(
             jDsktpVentanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDsktpVentanaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDsktpVentanaLayout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         jDsktpVentanaLayout.setVerticalGroup(
             jDsktpVentanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,9 +477,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jDsktpVentana)
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jBtnCerrarSesion.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jBtnCerrarSesion.setForeground(new java.awt.Color(19, 56, 190));
         jBtnCerrarSesion.setText("Cerrar Sesion");
         jBtnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -478,6 +492,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jBtnEditar.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jBtnEditar.setForeground(new java.awt.Color(19, 56, 190));
         jBtnEditar.setText("Editar Perfil");
         jBtnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -485,6 +501,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jBtnDarseBaja.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jBtnDarseBaja.setForeground(new java.awt.Color(19, 56, 190));
         jBtnDarseBaja.setText("Darse de Baja");
         jBtnDarseBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -492,19 +510,37 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Datos Personales");
 
+        jTxtCedula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTxtNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTxtApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTxtDireccion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTxtTelefono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLbCedula.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLbCedula.setText("Cedula:");
 
+        jLbNombre.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLbNombre.setText("Nombre:");
 
+        jLbApellido.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLbApellido.setText("Apellido:");
 
+        jLbDireccion.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLbDireccion.setText("Direccion:");
 
+        jLbTelefono.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLbTelefono.setText("Telefono:");
 
+        jBtnCancelarMod.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jBtnCancelarMod.setForeground(new java.awt.Color(19, 56, 190));
         jBtnCancelarMod.setText("Cancelar");
         jBtnCancelarMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -512,6 +548,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jBtnGuardarMod.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jBtnGuardarMod.setForeground(new java.awt.Color(19, 56, 190));
         jBtnGuardarMod.setText("Guardar");
         jBtnGuardarMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -519,6 +557,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLbModificarTitulo.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLbModificarTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbModificarTitulo.setText("Modificar Datos Personales");
 
@@ -561,7 +600,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jBtnCerrarSesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -605,25 +644,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(5, 5, 5))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(10, 10, 10))
         );
 
         pack();
