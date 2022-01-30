@@ -34,7 +34,7 @@ public class Registro extends javax.swing.JFrame {
      */
     public Registro() {
         initComponents();
-        //llenarComboBox();
+        llenarComboBox();
         jLbProveedor.setVisible(false);
         jTxtCedProveedor.setVisible(false);
     }
@@ -47,6 +47,12 @@ public class Registro extends javax.swing.JFrame {
         //long f = fecha.getTime();
         //return fechaActual = new java.sql.Date(f);
         return formato.format(fecha);
+    }
+    
+    public void llenarComboBox() {
+        String[] cargos = {"Seleccione Uno", "Inquilino", "Propietario", "Secretaria"};
+        DefaultComboBoxModel combo = new DefaultComboBoxModel(cargos);
+        jCmbxCargo.setModel(combo);
     }
 
     public void agregarPropietarioBD() {
