@@ -17,7 +17,7 @@ public class InmueblesMCS {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Llamar el login
+        //Correcion de la rama Master
         Login login = new Login();
         login.setVisible(true);
     }
